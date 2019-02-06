@@ -25,7 +25,6 @@ server {
     }
 }
 
-sudo letsencrypt certonly -a webroot --webroot-path=/var/www/html/gofastrace.tk/ -d gofastrace.tk
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/example.key -out /etc/nginx/ssl/example.crt
 
 sudo nginx -t
@@ -35,3 +34,22 @@ netstat -tupln
 34.235.156.95
 
 curl 'https://gofastrace.tk/' -H 'Connection: keep-alive' -H 'Cache-Control: max-age=0' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-US,en;q=0.9,vi;q=0.8' --compressed --insecure
+curl 'https://gofastrace.tk/.well-known/stellar.toml' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-US,en;q=0.9,vi;q=0.8' --compressed --insecure
+
+curl 'https://localhost/.well-known/stellar.toml' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-US,en;q=0.9,vi;q=0.8' --compressed --insecure
+
+git remote set-url origin git@github.com:dangtuan21/github.com/dangtuan21/aws.git
+
+----
+Goodusd100
+Issuer
+Public Key: GDVCUZ7645EKO4CALLYTZM5EANK43NHEDGESHUTIDYOSW6U4MLNT5GJV
+Secret Key: SDVREQOLN3PTX2P66KQOAQJQNBGPFUPU5L7WORJRTAWQQWH4QFUURTZK
+
+Dist 2/Receiver
+Public Key: GA7IYYSL6W62CQACDNUUISNLPZZKWKRF2HJDGQXOLFQQJNU4MB2WWUNL
+Secret Key: SC3G557MMPNJOO66VF76BNQEMQRQ55ZDCMQP67C4WH7JH2V7ZMLZYKHR
+
+Dist 1/Sender
+GCOVM44ZPM6Y2YI7J2UVIELRG4KUAPKB24UOSXGB5XVOPWEIDLHMI4SL
+SC3NU2Z4E6D4FP4ZNEUNO2QUUN353KM5YHZGHXLFVMZR2NRGXW2KFJWI
