@@ -1,0 +1,37 @@
+ssh -i "ep-keypair.pem" ubuntu@ec2-34-235-156-95.compute-1.amazonaws.com
+cd /etc/nginx/sites-available
+sudo nano default
+
+# root folder
+/var/www/html
+
+http://gofastrace.tk//.well-known/stellar.txt
+
+server {
+    listen 80 default_server;
+    server_name gofastrace.tk;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name gofastrace.tk;
+
+    ssl_certificate /etc/nginx/ssl/example.crt;
+    ssl_certificate_key /etc/nginx/ssl/example.key;
+    location / {
+        root /var/www/html;
+        index index.html index.htm
+    }
+}
+
+sudo letsencrypt certonly -a webroot --webroot-path=/var/www/html/gofastrace.tk/ -d gofastrace.tk
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/example.key -out /etc/nginx/ssl/example.crt
+
+sudo nginx -t
+sudo nginx -s reload
+sudo service nginx restart
+netstat -tupln
+34.235.156.95
+
+curl 'https://gofastrace.tk/' -H 'Connection: keep-alive' -H 'Cache-Control: max-age=0' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-US,en;q=0.9,vi;q=0.8' --compressed --insecure
