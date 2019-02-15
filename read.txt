@@ -2,10 +2,14 @@ ssh -i "ep-keypair.pem" ubuntu@ec2-34-235-156-95.compute-1.amazonaws.com
 cd /etc/nginx/sites-available
 sudo nano default
 
+kill -9 $(lsof -t -i:xxx)
+
 # root folder
 /var/www/html
 
-http://gofastrace.tk//.well-known/stellar.txt
+curl 'http://gofastrace.tk/' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36' --compressed
+
+http://gofastrace.tk//.well-known/stellar.toml
 
 server {
     listen 80 default_server;
@@ -39,6 +43,10 @@ curl 'https://gofastrace.tk/.well-known/stellar.toml' -H 'Connection: keep-alive
 curl 'https://localhost/.well-known/stellar.toml' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-US,en;q=0.9,vi;q=0.8' --compressed --insecure
 
 git remote set-url origin git@github.com:dangtuan21/github.com/dangtuan21/aws.git
+---
+setup
+mysql -uroot -ptuandang
+
 
 ----
 Goodusd100
@@ -53,3 +61,57 @@ Secret Key: SC3G557MMPNJOO66VF76BNQEMQRQ55ZDCMQP67C4WH7JH2V7ZMLZYKHR
 Dist 1/Sender
 GCOVM44ZPM6Y2YI7J2UVIELRG4KUAPKB24UOSXGB5XVOPWEIDLHMI4SL
 SC3NU2Z4E6D4FP4ZNEUNO2QUUN353KM5YHZGHXLFVMZR2NRGXW2KFJWI
+---
+#ok
+curl "https://gofastrace.tk:8002/federation?q=jack_brown*gofastrace.tk&type=name"
+
+#ok
+curl -X POST -d \
+"id=30&\
+amount=5&\
+asset_code=Goodusd100&\
+asset_issuer=GDVCUZ7645EKO4CALLYTZM5EANK43NHEDGESHUTIDYOSW6U4MLNT5GJV&\
+destination=jack_brown*gofastrace.tk&\
+source=SA4O7EUNYWTXVXKGIKXFQUZ5A3PXQPPLWDF576BRKEOLO2FSNWQTO6IH&\
+sender=amy_smith*gofastrace.tk&\
+extra_memo=Test_Transaction" \
+http://localhost:8006/payment
+
+#ok
+curl -X POST -d \
+"id=21&\
+amount=12&\
+asset_code=Goodusd100&\
+asset_issuer=GDVCUZ7645EKO4CALLYTZM5EANK43NHEDGESHUTIDYOSW6U4MLNT5GJV&\
+destination=GA7IYYSL6W62CQACDNUUISNLPZZKWKRF2HJDGQXOLFQQJNU4MB2WWUNL&\
+source=SC3NU2Z4E6D4FP4ZNEUNO2QUUN353KM5YHZGHXLFVMZR2NRGXW2KFJWI" \
+http://localhost:8006/payment
+
+----
+cert file: 
+/etc/letsencrypt/live
+---
+# get free domain
+http://www.dot.tk
+
+#Install nginx
+sudo apt update
+sudo apt install nginx
+
+# root folder
+/var/www/html
+
+1. https://certbot.eff.org/
+2.
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-nginx
+
+3.
+sudo certbot --nginx certonly
+
+5. sudo nginx -t
+
+6. sudo service nginx restart
