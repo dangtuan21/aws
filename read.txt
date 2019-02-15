@@ -67,7 +67,7 @@ curl "https://gofastrace.tk:8002/federation?q=jack_brown*gofastrace.tk&type=name
 
 #ok
 curl -X POST -d \
-"id=11&\
+"id=30&\
 amount=5&\
 asset_code=Goodusd100&\
 asset_issuer=GDVCUZ7645EKO4CALLYTZM5EANK43NHEDGESHUTIDYOSW6U4MLNT5GJV&\
