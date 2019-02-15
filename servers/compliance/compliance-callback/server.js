@@ -16,6 +16,7 @@ function findCustomerByFriendlyId(friendlyId) {
 //----------
 app.post('/compliance/fetch_info', function (request, response) {
     console.log('compliance server fetch_info starting...' );
+    console.log('debug: ' , response);
     var addressParts = response.body.address.split('*');
     var friendlyId = addressParts[0];
     console.log('friendlyId', friendlyId);
